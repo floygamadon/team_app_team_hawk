@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
       // Only edit text/colors below unless instructed otherwise.
       // TASK 1: Change the title of the app
       // 👉 Replace the string below with your own app title (example: 'Flutter Team Challenge').
-      title: 'My First Flutter App',
+      title: 'Flutter Team Challenge',
       theme: ThemeData(
-        // TASK 2: Change the primary swatch color
+        // TASK 2: Change the primary swatch color (Done)
         // 👉 Pick one Material color from Colors (example: Colors.red, Colors.green, Colors.purple).
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: HomePage(),
     );
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         // TASK 3: Change the text in the top bar
         // 👉 Replace the AppBar title text with your team name or app name.
-        title: Text('Welcome to Class'),
+        title: Text('Welcome to Team Hawk!'),
       ),
       body: Center(
         child: Column(
@@ -67,6 +67,10 @@ class HomePage extends StatelessWidget {
               // 👉 Replace the button text with an action label (example: 'Show Info').
               child: Text('Click Me'),
             ),
+            SizedBox(height: 30),
+            CounterWidget(),
+
+
             // TASK 7: Add a new Text widget below (after this comment)
             // 👉 Add a new Text widget here. Example:
             // Text('Created by: [Your Name]')
@@ -98,3 +102,53 @@ class HomePage extends StatelessWidget {
 //   ),
 // ),
 // TIP: Keep the button inside the Column so it shows in the center.
+class CounterWidget extends StatefulWidget {
+  @override
+  _CounterWidgetState createState() => _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State<CounterWidget> {
+  int _count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text(
+              'Count: $_count',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _count--;
+                    });
+                  },
+                  child: Icon(Icons.remove),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _count++;
+                    });
+                  },
+                  child: Icon(Icons.add),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
